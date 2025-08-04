@@ -1,0 +1,274 @@
+
+> scoutbet@0.1.0 dev
+> next dev --port 3002
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /mnt/c/Users/glend/package-lock.json.
+   Consider removing the lockfiles at:
+   * /mnt/c/Users/glend/.claude/scoutbet/package-lock.json
+
+   ▲ Next.js 15.4.4
+   - Local:        http://localhost:3002
+   - Network:      http://10.255.255.254:3002
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 45.1s
+ ○ Compiling /api/scout ...
+ ✓ Compiled /api/scout in 9.1s (287 modules)
+ POST /api/scout 200 in 33950ms
+Erro na API Scout: SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at POST (src/app/api/scout/route.ts:6:53)
+  4 | export async function POST(request: NextRequest) {
+  5 |   try {
+> 6 |     const { action, target, params } = await request.json()
+    |                                                     ^
+  7 |
+  8 |     switch (action) {
+  9 |       case 'search_odds':
+ ○ Compiling / ...
+ ✓ Compiled / in 40.5s (687 modules)
+ GET / 200 in 9771ms
+ ○ Compiling /api/scout ...
+ ✓ Compiled /api/scout in 1065ms (416 modules)
+🔍 Scout API called: 2025-07-28T15:29:43.849Z
+📋 Request params: { action: 'search_odds', target: 'Flamengo vs Palmeiras', params: {} }
+🎯 Iniciando busca de odds para: Flamengo vs Palmeiras
+🎯 [BROWSERBASE] Iniciando scraping para: Flamengo vs Palmeiras
+📊 [BROWSERBASE] Timestamp de início: 2025-07-28T15:29:43.861Z
+🔑 [BROWSERBASE] API Key disponível: true
+📍 [BROWSERBASE] Project ID: 010a1916-71f9-491f-b050-971715b866d1
+🚀 Criando sessão oficial Browserbase...
+ GET / 200 in -5845ms
+✅ Sessão Browserbase criada: 408c0955-f67a-4d70-9b99-ad2208cbeb98
+🔗 Conectando ao navegador via CDP...
+✅ Navegador conectado via CDP
+🔍 [BROWSERBASE] Buscando em: https://www.flashscore.com.br/
+Erro ao fazer scraping em https://www.flashscore.com.br/: Error [TimeoutError]: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.flashscore.com.br/", waiting until "networkidle"[22m
+
+    at BrowserbaseScout.scrapeSite (src/lib/browserbase.ts:177:17)
+    at BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:127:40)
+    at async searchOdds (src/app/api/scout/route.ts:48:19)
+    at async POST (src/app/api/scout/route.ts:24:15)
+  175 |     try {
+  176 |       // Navegar para o site
+> 177 |       await page.goto(url, { 
+      |                 ^
+  178 |         waitUntil: 'networkidle',
+  179 |         timeout: 30000 
+  180 |       })
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.flashscore.com.br/ (27712ms)
+🔍 [BROWSERBASE] Buscando em: https://www.bet365.com/
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.bet365.com/ (11426ms)
+🔍 [BROWSERBASE] Buscando em: https://www.betfair.com/
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.betfair.com/ (6232ms)
+✅ [BROWSERBASE] Scraping concluído em 50876ms
+📊 [BROWSERBASE] Resultados obtidos: 0 casas de apostas
+🎯 [BROWSERBASE] Taxa de sucesso: 0.0%
+✅ Odds encontradas em 50876ms para 0 casas
+ POST /api/scout 200 in 46236ms
+ ○ Compiling /api/chat ...
+ ✓ Compiled /api/chat in 1408ms (698 modules)
+🚀 API Chat chamada: 2025-07-28T15:31:10.575Z
+📝 Mensagem recebida: busque jogos pro dia de hoje
+✅ Chave do Gemini encontrada
+🧠 Iniciando chamada do Gemini 2.0 Flash Thinking...
+📡 Iniciando processamento com Gemini Thinking...
+📋 Aplicando PRD - Professional Requirements Document...
+🎯 Tipo de consulta detectado: general
+👤 Nível do usuário detectado: iniciante
+🌐 Consulta requer dados reais - ativando Browserbase...
+🔍 Buscando dados reais para: busque jogos pro dia de hoje
+📊 Busca genérica de dados...
+🎯 [BROWSERBASE] Iniciando scraping para: busque jogos pro dia de hoje
+📊 [BROWSERBASE] Timestamp de início: 2025-07-28T15:31:10.591Z
+🔑 [BROWSERBASE] API Key disponível: true
+📍 [BROWSERBASE] Project ID: 010a1916-71f9-491f-b050-971715b866d1
+🚀 Criando sessão oficial Browserbase...
+✅ Sessão Browserbase criada: 587ab77a-ddcc-4f55-b550-24856b912517
+🔗 Conectando ao navegador via CDP...
+✅ Navegador conectado via CDP
+🔍 [BROWSERBASE] Buscando em: https://www.flashscore.com.br/
+Erro ao fazer scraping em https://www.flashscore.com.br/: Error [TimeoutError]: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.flashscore.com.br/", waiting until "networkidle"[22m
+
+    at BrowserbaseScout.scrapeSite (src/lib/browserbase.ts:177:17)
+    at BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:127:40)
+    at async getBrowserbaseData (src/app/api/chat/route.ts:502:15)
+    at async POST (src/app/api/chat/route.ts:128:28)
+  175 |     try {
+  176 |       // Navegar para o site
+> 177 |       await page.goto(url, { 
+      |                 ^
+  178 |         waitUntil: 'networkidle',
+  179 |         timeout: 30000 
+  180 |       })
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.flashscore.com.br/ (27496ms)
+🔍 [BROWSERBASE] Buscando em: https://www.bet365.com/
+⏰ Timeout de 45s atingido
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.bet365.com/ (34327ms)
+🔍 [BROWSERBASE] Buscando em: https://www.betfair.com/
+⚠️ [BROWSERBASE] Nenhum dado encontrado em https://www.betfair.com/ (6633ms)
+✅ [BROWSERBASE] Scraping concluído em 74313ms
+📊 [BROWSERBASE] Resultados obtidos: 0 casas de apostas
+🎯 [BROWSERBASE] Taxa de sucesso: 0.0%
+✅ Dados reais obtidos via Browserbase
+📝 Prompt PRD-compliant gerado
+✅ Resposta recebida do Gemini Thinking
+🔍 Validando resposta contra PRD...
+📏 Tamanho da resposta: 1740 caracteres
+🎯 Retornando resposta profissional PRD-compliant para o frontend
+ POST /api/chat 200 in 83826ms
+🚀 API Chat chamada: 2025-07-28T15:33:42.083Z
+📝 Mensagem recebida: Analise o jogo Flamengo vs Palmeiras
+✅ Chave do Gemini encontrada
+🧠 Iniciando chamada do Gemini 2.0 Flash Thinking...
+📡 Iniciando processamento com Gemini Thinking...
+📋 Aplicando PRD - Professional Requirements Document...
+🎯 Tipo de consulta detectado: team_analysis
+👤 Nível do usuário detectado: iniciante
+🌐 Consulta requer dados reais - ativando Browserbase...
+🔍 Buscando dados reais para: Analise o jogo Flamengo vs Palmeiras
+📊 Busca genérica de dados...
+🎯 [BROWSERBASE] Iniciando scraping para: Analise o jogo Flamengo vs Palmeiras
+📊 [BROWSERBASE] Timestamp de início: 2025-07-28T15:33:42.091Z
+🔑 [BROWSERBASE] API Key disponível: true
+📍 [BROWSERBASE] Project ID: 010a1916-71f9-491f-b050-971715b866d1
+🔗 Conectando ao navegador via CDP...
+❌ Erro ao conectar navegador: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (src/lib/browserbase.ts:84:14)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:109:22)
+    at async getBrowserbaseData (src/app/api/chat/route.ts:502:15)
+    at async POST (src/app/api/chat/route.ts:128:28)
+  82 |       
+  83 |       if (!cdpUrl) {
+> 84 |         throw new Error('URL de conexão CDP não disponível')
+     |              ^
+  85 |       }
+  86 |
+  87 |       // Conectar Playwright ao navegador Browserbase
+❌ [BROWSERBASE] Erro no scraping: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (src/lib/browserbase.ts:84:14)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:109:22)
+    at async getBrowserbaseData (src/app/api/chat/route.ts:502:15)
+    at async POST (src/app/api/chat/route.ts:128:28)
+  82 |       
+  83 |       if (!cdpUrl) {
+> 84 |         throw new Error('URL de conexão CDP não disponível')
+     |              ^
+  85 |       }
+  86 |
+  87 |       // Conectar Playwright ao navegador Browserbase
+🔍 [BROWSERBASE] Stack trace: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (webpack-internal:///(rsc)/./src/lib/browserbase.ts:47:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (webpack-internal:///(rsc)/./src/lib/browserbase.ts:67:29)
+    at async getBrowserbaseData (webpack-internal:///(rsc)/./src/app/api/chat/route.ts:467:24)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/chat/route.ts:128:39)
+    at async AppRouteRouteModule.do (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:5:38782)
+    at async AppRouteRouteModule.handle (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:5:45984)
+    at async responseGenerator (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:206:38)
+    at async AppRouteRouteModule.handleResponse (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:1:183647)
+    at async handleResponse (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:268:32)
+    at async handler (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:320:13)
+    at async doRender (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1586:34)
+    at async DevServer.renderToResponseWithComponentsImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1928:13)
+    at async DevServer.renderPageComponent (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:2394:24)
+    at async DevServer.renderToResponseImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:2434:32)
+    at async DevServer.pipeImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1034:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/next-server.js:393:17)
+    at async DevServer.handleRequestImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:925:17)
+    at async /mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/dev/next-dev-server.js:398:20
+    at async Span.traceAsyncFn (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/trace/trace.js:157:20)
+    at async DevServer.handleRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/dev/next-dev-server.js:394:24)
+    at async invokeRender (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:239:21)
+    at async handleRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:436:24)
+    at async requestHandlerImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:464:13)
+    at async Server.requestListener (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/start-server.js:218:13)
+⏱️ [BROWSERBASE] Tempo até erro: 1039 ms
+✅ Dados reais obtidos via Browserbase
+📝 Prompt PRD-compliant gerado
+✅ Resposta recebida do Gemini Thinking
+🔍 Validando resposta contra PRD...
+📏 Tamanho da resposta: 2217 caracteres
+🎯 Retornando resposta profissional PRD-compliant para o frontend
+ POST /api/chat 200 in 11777ms
+ GET / 200 in -9020ms
+🚀 API Chat chamada: 2025-07-28T15:35:20.019Z
+📝 Mensagem recebida: busque jogos de hoje
+✅ Chave do Gemini encontrada
+🧠 Iniciando chamada do Gemini 2.0 Flash Thinking...
+📡 Iniciando processamento com Gemini Thinking...
+📋 Aplicando PRD - Professional Requirements Document...
+🎯 Tipo de consulta detectado: general
+👤 Nível do usuário detectado: iniciante
+🌐 Consulta requer dados reais - ativando Browserbase...
+🔍 Buscando dados reais para: busque jogos de hoje
+📊 Busca genérica de dados...
+🎯 [BROWSERBASE] Iniciando scraping para: busque jogos de hoje
+📊 [BROWSERBASE] Timestamp de início: 2025-07-28T15:35:20.028Z
+🔑 [BROWSERBASE] API Key disponível: true
+📍 [BROWSERBASE] Project ID: 010a1916-71f9-491f-b050-971715b866d1
+🔗 Conectando ao navegador via CDP...
+❌ Erro ao conectar navegador: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (src/lib/browserbase.ts:84:14)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:109:22)
+    at async getBrowserbaseData (src/app/api/chat/route.ts:502:15)
+    at async POST (src/app/api/chat/route.ts:128:28)
+  82 |       
+  83 |       if (!cdpUrl) {
+> 84 |         throw new Error('URL de conexão CDP não disponível')
+     |              ^
+  85 |       }
+  86 |
+  87 |       // Conectar Playwright ao navegador Browserbase
+❌ [BROWSERBASE] Erro no scraping: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (src/lib/browserbase.ts:84:14)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (src/lib/browserbase.ts:109:22)
+    at async getBrowserbaseData (src/app/api/chat/route.ts:502:15)
+    at async POST (src/app/api/chat/route.ts:128:28)
+  82 |       
+  83 |       if (!cdpUrl) {
+> 84 |         throw new Error('URL de conexão CDP não disponível')
+     |              ^
+  85 |       }
+  86 |
+  87 |       // Conectar Playwright ao navegador Browserbase
+🔍 [BROWSERBASE] Stack trace: Error: URL de conexão CDP não disponível
+    at BrowserbaseScout.connectBrowser (webpack-internal:///(rsc)/./src/lib/browserbase.ts:47:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BrowserbaseScout.scrapeMultipleBookmakers (webpack-internal:///(rsc)/./src/lib/browserbase.ts:67:29)
+    at async getBrowserbaseData (webpack-internal:///(rsc)/./src/app/api/chat/route.ts:467:24)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/chat/route.ts:128:39)
+    at async AppRouteRouteModule.do (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:5:38782)
+    at async AppRouteRouteModule.handle (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:5:45984)
+    at async responseGenerator (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:206:38)
+    at async AppRouteRouteModule.handleResponse (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:1:183647)
+    at async handleResponse (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:268:32)
+    at async handler (webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fapi%2Fchat%2Froute&page=%2Fapi%2Fchat%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fchat%2Froute.ts&appDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fmnt%2Fc%2FUsers%2Fglend%2F.claude%2Fscoutbet&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D&isGlobalNotFoundEnabled=!:320:13)
+    at async doRender (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1586:34)
+    at async DevServer.renderToResponseWithComponentsImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1928:13)
+    at async DevServer.renderPageComponent (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:2394:24)
+    at async DevServer.renderToResponseImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:2434:32)
+    at async DevServer.pipeImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:1034:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/next-server.js:393:17)
+    at async DevServer.handleRequestImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/base-server.js:925:17)
+    at async /mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/dev/next-dev-server.js:398:20
+    at async Span.traceAsyncFn (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/trace/trace.js:157:20)
+    at async DevServer.handleRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/dev/next-dev-server.js:394:24)
+    at async invokeRender (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:239:21)
+    at async handleRequest (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:436:24)
+    at async requestHandlerImpl (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/router-server.js:464:13)
+    at async Server.requestListener (/mnt/c/Users/glend/.claude/scoutbet/node_modules/next/dist/server/lib/start-server.js:218:13)
+⏱️ [BROWSERBASE] Tempo até erro: 3031 ms
+✅ Dados reais obtidos via Browserbase
+📝 Prompt PRD-compliant gerado
+✅ Resposta recebida do Gemini Thinking
+🔍 Validando resposta contra PRD...
+📏 Tamanho da resposta: 1638 caracteres
+🎯 Retornando resposta profissional PRD-compliant para o frontend
+ POST /api/chat 200 in 13387ms
+[?25h
